@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="description"
+        content="CUDA Agent: Large-Scale Agentic RL for High-Performance CUDA Kernel Generation">
+  <meta name="keywords" content="CUDA Agent, CUDA, kernel generation, agentic RL, KernelBench">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>CUDA Agent</title>
+
+  <script async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+
+  <link href="https://fonts.googleapis.com/css?family=Google+Sans|Noto+Sans|Castoro"
+        rel="stylesheet">
+
+  <link rel="stylesheet" href="./static/css/bulma.min.css">
+  <link rel="stylesheet" href="./static/css/bulma-carousel.min.css">
+  <link rel="stylesheet" href="./static/css/bulma-slider.min.css">
+  <link rel="stylesheet" href="./static/css/fontawesome_6_7_2.all.css">
+  <link rel="stylesheet"
+        href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
+  <link rel="stylesheet" href="./static/css/index.css">
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script defer src="./static/js/fontawesome_6_7_2.all.js"></script>
+  <script src="./static/js/bulma-carousel.min.js"></script>
+  <script src="./static/js/bulma-slider.min.js"></script>
+  <script src="./static/js/index.js"></script>
+</head>
+<body>
+
+<nav class="navbar" role="navigation" aria-label="main navigation">
+  <div class="navbar-brand">
+    <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false">
+      <span aria-hidden="true"></span>
+      <span aria-hidden="true"></span>
+      <span aria-hidden="true"></span>
+    </a>
+  </div>
+</nav>
+
+
+<section class="hero">
+  <div class="hero-body">
+    <div class="container is-max-desktop">
+      <div class="columns is-centered">
+        <div class="column has-text-centered">
+          <h1 class="title is-1 publication-title">
+            CUDA Agent: Large-Scale Agentic RL<br>
+            for High-Performance CUDA Kernel Generation
+          </h1>
+
+          <div class="is-size-5 publication-authors">
+            <span class="author-block">Weinan Dai<sup>1,2,3</sup><sup>*</sup>,</span>
+            <span class="author-block">Hanlin Wu<sup>1,2,3</sup><sup>*</sup>,</span>
+            <span class="author-block">Qiying Yu<sup>1</sup>,</span>
+            <span class="author-block">Jiahao Li<sup>1</sup>,</span>
+            <span class="author-block">Chengquan Jiang<sup>1</sup>,</span>
+            <span class="author-block">Yufan Song<sup>1</sup>,</span>
+            <span class="author-block">Huan-ang Gao<sup>1</sup>,</span>
+            <span class="author-block">Weiqiang Lou<sup>1</sup>,</span>
+            <span class="author-block">Hongli Yu<sup>1</sup>,</span>
+            <span class="author-block">Jiaze Chen<sup>1</sup>,</span>
+            <span class="author-block">Wei-Ying Ma<sup>1</sup>,</span>
+            <span class="author-block">Ya-Qin Zhang<sup>1</sup>,</span>
+            <span class="author-block">Wei-Ying Ma<sup>1</sup>,</span>
+            <span class="author-block">Jingjing Liu<sup>1</sup>,</span>
+            <span class="author-block">Mingxuan Wang<sup>1</sup>,</span>
+            <span class="author-block">Xin Liu<sup>1</sup>,</span>
+            <span class="author-block">Hao Zhou<sup>1</sup><sup>&dagger;</sup></span>
+          </div>
+          <div class="is-size-6 publication-authors">
+            <span class="author-block"><sup>1</sup>ByteDance Seed</span>
+            &nbsp;
+            <span class="author-block"><sup>2</sup>Institute for AI Industry Research (AIR), Tsinghua University</span>
+            &nbsp;
+            <span class="author-block"><sup>3</sup>SIA-Lab of Tsinghua AIR and ByteDance Seed</span>
+            <br>
+            <span class="author-block"><sup>*</sup>Equal contributions, <sup>&dagger;</sup>Corresponding authors</span>
+          </div>
+
+          <div class="column has-text-centered">
+            <div class="publication-links">
+              <span class="link-block">
+                <a href="./static/pdf/CUDA_Agent_Arxiv_Version.pdf"
+                   class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                      <i class="fa-solid fa-file-pdf" style="color: #ec4646;"></i>
+                  </span>
+                  <span>Paper (PDF)</span>
+                </a>
+              </span>
+              <span class="link-block">
+                <a href="#" class="external-link button is-normal is-rounded is-dark is-disabled" title="Coming soon">
+                  <span class="icon">
+                      <i class="fab fa-github"></i>
+                  </span>
+                  <span>Code (Coming Soon)</span>
+                </a>
+              </span>
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container is-max-desktop">
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-four-fifths">
+        <h2 class="title is-3">Abstract</h2>
+        <div class="content has-text-justified">
+          <p>
+            GPU kernel optimization is fundamental to modern deep learning but remains a highly specialized task requiring deep hardware expertise.
+            Despite strong performance in general programming, large language models (LLMs) remain uncompetitive with compiler-based systems such as
+            <span style="font-weight: 600;">torch.compile</span> for CUDA kernel generation. Existing CUDA code generation approaches either rely on training-free
+            refinement or fine-tune models within fixed multi-turn execution-feedback loops, while both paradigms fail to fundamentally improve the model’s
+            intrinsic CUDA optimization ability, resulting in limited performance gains. We present CUDA Agent, a large-scale agentic reinforcement learning
+            system that develops CUDA kernel expertise through three components: a scalable data synthesis pipeline, a skill-augmented CUDA development
+            environment with automated verification and profiling to provide reliable reward signals, and RL algorithmic techniques enabling stable training.
+            CUDA Agent achieves state-of-the-art results on KernelBench, delivering 100%, 100%, and 92% faster rate over torch.compile on KernelBench
+            Level-1, Level-2, and Level-3 splits, outperforming the strongest proprietary models (e.g., Claude Opus 4.5 and Gemini 3 Pro) by about 40%
+            on the hardest Level-3 setting.
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container is-max-desktop">
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-four-fifths">
+        <h2 class="title is-3">Key Contributions</h2>
+        <div class="content has-text-justified">
+          <ul>
+            <li>
+              We introduce CUDA Agent, a large-scale agentic reinforcement learning system for automatic CUDA kernel generation that improves the base model’s
+              CUDA coding and optimization abilities through scalable data synthesis, a skill-augmented development environment, and RL techniques designed
+              for stable long-context, multi-turn agentic training.
+            </li>
+            <li>
+              CUDA Agent achieves state-of-the-art performance on KernelBench, outperforming torch.compile in the majority of test cases and delivering the
+              largest speedups across multiple difficulty levels.
+            </li>
+            <li>
+              The system scales to a 128k context length and supports up to 200 interaction turns, enabling complex multi-step debugging and optimization
+              workflows within a single episode.
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container is-max-desktop">
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-four-fifths">
+        <h2 class="title is-3">Results on KernelBench</h2>
+        <figure class="image">
+          <img src="./static/images/benchmark_chart_1.png" alt="KernelBench results">
+        </figure>
+        <p class="figure-caption">Correctness and speedup metrics across KernelBench levels.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container is-max-desktop">
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-four-fifths">
+        <h2 class="title is-3">Data Synthesis Pipeline</h2>
+        <div class="content has-text-justified">
+          <p>
+            To build a large and diverse training set without hand-written expert kernels, CUDA Agent uses a three-stage synthesis pipeline.
+            First, it crawls reference operators implemented in PyTorch from the torch and transformers libraries, representing each operator as a Python
+            class with initialization and forward methods. Next, an LLM performs combinatorial synthesis by sampling up to five operator classes from
+            torch and composing them sequentially into fused multi-operator tasks. Finally, a rubric-based filtering stage keeps only tasks that are
+            executable, deterministic, and non-trivial.
+          </p>
+          <p>
+            The filtering criteria include: successful execution in both eager and torch.compile modes, exclusion of stochastic operators, checks against
+            constant or indistinguishable outputs, and an eager-mode runtime window of 1–100 ms to avoid trivial or excessively heavy workloads. Operators
+            highly similar to KernelBench test cases are removed to reduce contamination. The resulting synthesized dataset contains 6,144 training samples.
+          </p>
+        </div>
+        <figure class="image">
+          <img src="./static/images/data_pipeline_1.png" alt="Data synthesis pipeline">
+        </figure>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container is-max-desktop">
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-four-fifths">
+        <h2 class="title is-3">Agent Environment</h2>
+        <div class="content has-text-justified">
+          <p>
+            The agent loop follows a ReAct-style paradigm with standard shell tools, enabling iterative coding, compilation, debugging, and performance
+            optimization. CUDA-specific instructions and tools are packaged as an explicit skill (SKILL.md), which standardizes the workflow:
+            profile the native PyTorch implementation, implement and bind custom CUDA kernels, compile and evaluate in a GPU sandbox, and iterate until
+            the result exceeds a 5% speedup over torch.compile while passing correctness checks.
+          </p>
+          <p>
+            To ensure reliable execution-based feedback, the environment enforces robust verification and profiling: protected evaluation scripts prevent
+            tampering, fallbacks to torch.nn.functional are blocked, correctness is validated on multiple random inputs, and profiling uses proper device
+            synchronization, warm-up, and repeated measurements. The agent has no web-search access, ensuring solutions are derived purely from local tools.
+          </p>
+        </div>
+        <figure class="image">
+          <img src="./static/images/agent_loop_1.png" alt="Agent environment">
+        </figure>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container is-max-desktop">
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-four-fifths">
+        <h2 class="title is-3">Training Pipeline</h2>
+        <div class="content has-text-justified">
+          <p>
+            Training proceeds in stages to stabilize long-context RL. First, a single-turn PPO warm-up improves the base model’s CUDA kernel generation
+            ability. Next, trajectories from this warm-up are used for Reject Sampling Fine-Tuning (RFT) to initialize the actor, and value pretraining
+            to initialize the critic. Finally, the system performs multi-turn agentic RL with PPO to learn debugging and optimization strategies.
+          </p>
+          <p>
+            A robust reward schedule jointly optimizes correctness and speed, assigning discrete rewards for passing correctness and exceeding speedup
+            thresholds relative to eager and torch.compile baselines. This reduces noise from raw runtime ratios and encourages consistent performance
+            gains while avoiding reward hacking.
+          </p>
+        </div>
+        <figure class="image">
+          <img src="./static/images/training_stages_v2_1.png" alt="Training pipeline">
+        </figure>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer class="footer">
+  <div class="container">
+    <div class="content has-text-centered">
+    </div>
+    <div class="columns is-centered">
+      <div class="column is-8">
+        <div class="content">
+          <p>
+            This website is adapted from <a href="https://nerfies.github.io/">Nerfies</a> and licensed under a <a rel="license"
+                                                href="http://creativecommons.org/licenses/by-sa/4.0/">Creative
+            Commons Attribution-ShareAlike 4.0 International License</a>.
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>
