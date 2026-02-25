@@ -162,11 +162,39 @@
   <div class="container is-max-desktop">
     <div class="columns is-centered has-text-centered">
       <div class="column is-four-fifths">
-        <h2 class="title is-3">Results on KernelBench</h2>
+        <h2 class="title is-3">Main Results</h2>
         <figure class="image">
-          <img src="./static/images/benchmark_chart_1.png" alt="KernelBench results">
+          <img src="./static/images/main_results.png" alt="Main experimental results">
         </figure>
-        <p class="figure-caption">Correctness and speedup metrics across KernelBench levels.</p>
+        <p class="figure-caption">Overall performance and speedup metrics on KernelBench.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container is-max-desktop">
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-four-fifths">
+        <h2 class="title is-3">Ablation Studies</h2>
+        <p class="content has-text-justified">
+          We analyze the impact of key components in the training pipeline. The following ablations highlight
+          how removing RFT or Value Pretraining affects training stability and optimization quality.
+        </p>
+      </div>
+    </div>
+    <div class="columns is-centered">
+      <div class="column is-half">
+        <figure class="image">
+          <img src="./static/images/ablation_rft.png" alt="Ablation: RFT">
+        </figure>
+        <p class="figure-caption has-text-centered">Ablation: removing RFT.</p>
+      </div>
+      <div class="column is-half">
+        <figure class="image">
+          <img src="./static/images/ablation_vp.png" alt="Ablation: Value Pretraining">
+        </figure>
+        <p class="figure-caption has-text-centered">Ablation: removing Value Pretraining.</p>
       </div>
     </div>
   </div>
@@ -192,7 +220,7 @@
           </p>
         </div>
         <figure class="image">
-          <img src="./static/images/data_pipeline_1.png" alt="Data synthesis pipeline">
+          <img src="./static/images/data_pipeline.png" alt="Data synthesis pipeline">
         </figure>
       </div>
     </div>
@@ -218,7 +246,7 @@
           </p>
         </div>
         <figure class="image">
-          <img src="./static/images/agent_loop_1.png" alt="Agent environment">
+          <img src="./static/images/agent_loop.png" alt="Agent environment">
         </figure>
       </div>
     </div>
@@ -243,7 +271,7 @@
           </p>
         </div>
         <figure class="image">
-          <img src="./static/images/training_stages_v2_1.png" alt="Training pipeline">
+          <img src="./static/images/training_stages.png" alt="Training pipeline">
         </figure>
       </div>
     </div>
