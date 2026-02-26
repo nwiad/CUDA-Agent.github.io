@@ -88,11 +88,11 @@ body {
   font-size: 0.95rem;
 }
 
-.hf-logo {
-  max-width: 360px;
-  width: 100%;
-  margin: 0 auto;
-  display: block;
+.hf-icon {
+  height: 18px;
+  width: auto;
+  display: inline-block;
+  vertical-align: middle;
 }
 
 .is-disabled {
