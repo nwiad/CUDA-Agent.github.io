@@ -88,6 +88,15 @@ body {
   font-size: 0.95rem;
 }
 
+.is-wide {
+  max-width: 1000px !important;
+}
+
+.benchmark-teaser {
+  width: 100%;
+  max-width: 1000px;
+}
+
 
 .is-disabled {
   pointer-events: none;
