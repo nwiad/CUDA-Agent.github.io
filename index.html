@@ -261,6 +261,14 @@
     <div class="columns is-centered has-text-centered">
       <div class="column is-four-fifths">
         <h2 class="title is-3">Main Results</h2>
+        <div class="content has-text-justified">
+          <p>
+            On KernelBench, CUDA Agent achieves a 98.8% overall pass rate, with 96.8% of kernels faster than
+            torch.compile and a 2.11× geomean speedup (2.60× vs eager). It reaches 100% pass rate on Level-1
+            and Level-2, and maintains 94% pass rate with 90% faster-than-compile on the hardest Level-3 split,
+            indicating strong performance under more challenging kernels.
+          </p>
+        </div>
         <figure class="image">
           <img src="./static/images/main_results.png" alt="Main experimental results">
         </figure>
@@ -277,7 +285,7 @@
         <h2 class="title is-3">Ablation Studies</h2>
         <p class="content has-text-justified">
           We analyze the impact of key components in the training pipeline. The following ablations highlight
-          how removing RFT or Value Pretraining affects training stability and optimization quality.
+          how removing RFT or Value Pretraining affects training stability.
         </p>
       </div>
     </div>
