@@ -243,6 +243,9 @@
             to initialize the critic. Finally, the system performs multi-turn agentic RL with PPO to learn debugging and optimization strategies.
           </p>
           <p>
+            Base model: Seed1.6 (MoE, 23B active / 230B total parameters).
+          </p>
+          <p>
             A robust reward schedule jointly optimizes correctness and speed, assigning discrete rewards for passing correctness and exceeding speedup
             thresholds relative to eager and torch.compile baselines. This reduces noise from raw runtime ratios and encourages consistent performance
             gains while avoiding reward hacking.
