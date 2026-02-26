@@ -88,17 +88,6 @@ body {
   font-size: 0.95rem;
 }
 
-.hf-icon {
-  height: 26px;
-  width: auto;
-  display: inline-block;
-  vertical-align: middle;
-}
-
-.hf-icon-wrap {
-  width: 1.8em;
-  height: 1.8em;
-}
 
 .is-disabled {
   pointer-events: none;
