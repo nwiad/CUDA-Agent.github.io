@@ -52,6 +52,20 @@ nav a.active::after {
     font-weight: 500;
 }
 
+.author-block {
+    display: inline-block;
+    margin-right: 0.22rem;
+}
+
+.authors sup,
+.affiliations sup {
+    font-size: 0.72em;
+    line-height: 0;
+    vertical-align: super;
+    color: var(--primary-color);
+    font-weight: 700;
+}
+
 .flex-logo {
     line-height: 1.12;
     padding-bottom: 0.12em;
