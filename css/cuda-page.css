@@ -142,6 +142,13 @@ nav a.active::after {
     margin-top: 1.5rem;
 }
 
+.pipeline-stack {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 1.2rem;
+    margin-top: 1.5rem;
+}
+
 .card {
     background: var(--white);
     padding: 1.6rem;
